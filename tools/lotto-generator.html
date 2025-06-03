@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로또 번호 자동 생성기</title>
+</head>
+<body>
+  <h1>🎯 AI가 추천하는 이번 주 로또 번호</h1>
+  <p id="result">번호를 불러오는 중...</p>
+
+  <script>
+    function generateLotto() {
+      const numbers = new Set();
+      while (numbers.size < 6) {
+        numbers.add(Math.floor(Math.random() * 45) + 1);
+      }
+      return [...numbers].sort((a, b) => a - b);
+    }
+    const result = generateLotto();
+    document.getElementById("result").textContent = result.join(" , ");
+  </script>
+</body>
+</html>

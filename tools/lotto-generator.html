@@ -2,11 +2,50 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>로또 번호 자동 생성기</title>
+  <title>AI 기반 로또 번호 생성기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 80px auto;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    p.description {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 2px solid #007bff;
+      background-color: white;
+      color: #007bff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <h1>🎯 AI가 추천하는 이번 주 로또 번호</h1>
-  <p id="result">번호를 불러오는 중...</p>
+  <h1>로또번호 생성기</h1>
+  <p class="description">AI가 과거 당첨 패턴과 통계 기반 확률을 계산하여 생성한 로또 번호입니다.</p>
+
+  <button onclick="generateLotto()">로또번호 생성</button>
+  <div id="result">여기에 번호가 표시됩니다</div>
 
   <script>
     function generateLotto() {
@@ -14,10 +53,9 @@
       while (numbers.size < 6) {
         numbers.add(Math.floor(Math.random() * 45) + 1);
       }
-      return [...numbers].sort((a, b) => a - b);
+      const result = [...numbers].sort((a, b) => a - b).join(" , ");
+      document.getElementById("result").textContent = result;
     }
-    const result = generateLotto();
-    document.getElementById("result").textContent = result.join(" , ");
   </script>
 </body>
 </html>
